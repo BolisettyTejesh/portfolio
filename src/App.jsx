@@ -11,7 +11,6 @@ import CompetitiveProgramming from './components/CompetitiveProgramming'
 import Timeline from './components/Timeline'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import FeaturedProject from './components/FeaturedProject'
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
@@ -91,7 +90,6 @@ function App() {
         <Hero />
         <About />
         <Skills />
-        <FeaturedProject />
         <Projects />
         <CompetitiveProgramming />
         <Timeline />

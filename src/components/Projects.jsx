@@ -5,6 +5,19 @@ import { ExternalLink, Github, Layers } from 'lucide-react';
 const Projects = () => {
   const projectsList = [
     {
+      title: "LinguaAI – Real-Time Voice Translator",
+      description: "Developed a premium Real-Time Voice Translator web application with live speech recognition, instant multilingual translation, text-to-speech playback, and conversation history using React, Vite, and Web Speech APIs.",
+      techStack: ["React.js", "Vite", "Vanilla CSS3", "Web Speech API", "MyMemory API", "LocalStorage", "jsPDF"],
+      features: [
+        "Live speech recognition",
+        "Instant multilingual translation",
+        "Text-to-speech playback",
+        "Conversation history"
+      ],
+      github: "https://github.com/BolisettyTejesh/voice-translator",
+      live: "https://voice-translator-theta.vercel.app/"
+    },
+    {
       title: "AquaMyst — The Hidden Ocean Interpreter",
       description: "Developed a multi-agent AI platform using LangGraph, Ollama, PostgreSQL, and PostGIS to autonomously analyze oceanographic datasets with structured AI reasoning pipelines and collaborative intelligent agents.",
       techStack: ["Python", "LangGraph", "Ollama", "PostgreSQL", "PostGIS", "FastAPI"],
@@ -35,7 +48,7 @@ const Projects = () => {
   return (
     <section id="projects" className="section-padding">
       <div className="section-header text-center animate-fade-in">
-        <h2 className="section-title"><span className="text-gradient">Other</span> Projects</h2>
+        <h2 className="section-title"><span className="text-gradient">Featured</span> Projects</h2>
         <div className="section-line"></div>
       </div>
       
