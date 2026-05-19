@@ -48,7 +48,6 @@ const CompetitiveProgramming = () => {
               {profile.icon}
             </div>
             <h3 className="cp-platform">{profile.platform}</h3>
-            <p className="cp-stats">{profile.stats}</p>
             <div className="cp-link-indicator">
               View Profile <FastForward size={14} />
             </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Terminal } from 'lucide-react';
 import './Hero.css';
+import HeroProfileImage from './HeroProfileImage';
 
 const Typewriter = ({ strings }) => {
   const [currentStringIndex, setCurrentStringIndex] = useState(0);
@@ -91,6 +92,7 @@ const Hero = () => {
           </a>
         </div>
       </div>
+      <HeroProfileImage />
     </section>
   );
 };
