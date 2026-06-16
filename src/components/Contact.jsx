@@ -1,8 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Contact.css';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contact = () => {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+    
+    const formData = new FormData(event.target);
+    
+    // Web3Forms access key (You need to get this from web3forms.com)
+    // Replace the string below with your actual access key
+    formData.append("access_key", "c3f7ae5a-3d7d-400a-ba4c-3e3a401204b0");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Message Sent Successfully!");
+        event.target.reset();
+      } else {
+        console.log("Error", data);
+        setResult(data.message);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setResult("An error occurred. Please try again later.");
+    }
+  };
+
   return (
     <section id="contact" className="section-padding">
       <div className="section-header text-center animate-fade-in">
@@ -50,25 +83,31 @@ const Contact = () => {
           </div>
         </div>
         
-        <form className="contact-form glass-card" onSubmit={(e) => e.preventDefault()}>
+        <form className="contact-form glass-card" onSubmit={onSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" id="name" placeholder="John Doe" required />
+            <input type="text" id="name" name="name" placeholder="John Doe" required />
           </div>
           
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="john@example.com" required />
+            <input type="email" id="email" name="email" placeholder="john@example.com" required />
           </div>
           
           <div className="form-group">
             <label htmlFor="message">Message</label>
-            <textarea id="message" rows="5" placeholder="Hello, I'd like to talk about..." required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Hello, I'd like to talk about..." required></textarea>
           </div>
           
           <button type="submit" className="btn-primary submit-btn">
             Send Message <Send size={18} />
           </button>
+          
+          {result && (
+            <div className={`form-result ${result.includes("Successfully") ? "success" : "error"}`} style={{ marginTop: '1rem', textAlign: 'center', fontWeight: 'bold' }}>
+              {result}
+            </div>
+          )}
         </form>
       </div>
     </section>
